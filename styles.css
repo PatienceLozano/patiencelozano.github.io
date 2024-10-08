@@ -1,0 +1,339 @@
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap'); /* Fuente brutalista */
+
+/* Estilos generales */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #111; /* Negro suave */
+    color: white;
+    font-family: 'Unbounded', sans-serif;
+    overflow-x: hidden;
+    cursor: none; /* Ocultar el cursor predeterminado */
+}
+
+/* Cursor personalizado */
+.custom-cursor {
+    width: 15px;
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+}
+
+/* Logo animado */
+.logo {
+    font-size: 5rem; /* Tamaño del logo aumentado */
+    font-family: 'Unbounded', sans-serif;
+    color: transparent;
+    -webkit-text-stroke: 3px white; /* Contorno de la letra */
+    position: relative;
+    overflow: hidden;
+}
+
+.logo::before {
+    content: 'P';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    -webkit-text-stroke: 3px white;
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    transition: clip-path 0.8s ease;
+}
+
+.logo:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* Menú */
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.2rem;
+    font-family: 'Unbounded', sans-serif;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: #ff11008a;
+}
+
+/* Sección de bienvenida */
+.welcome-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    padding-left: 20px;
+}
+
+.welcome-title {
+    font-size: 6rem;
+    font-family: 'Unbounded', sans-serif;
+}
+
+.welcome-description {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    font-family: 'Unbounded', sans-serif;
+}
+
+/* Flecha de desplazamiento */
+.scroll-down {
+    margin-top: 50px;
+    cursor: pointer;
+    font-size: 6rem; /* Tamaño de la flecha */
+    color: #222; /* Color blanco */
+    line-height: 0.5; /* Alineación vertical de la flecha */
+    transform: translateY(10px); /* Posición inicial de la flecha */
+    transition: transform 0.3s ease;
+}
+
+.scroll-down .arrow {
+    width: 2px;
+    height: 50px;
+    background-color: white;
+    position: relative;
+}
+
+.scroll-down .arrow::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -20px;
+    width: 12px;
+    height: 12px;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(45deg);
+}
+
+.scroll-down:hover .arrow {
+    transform: translateY(10px);
+    transition: transform 0.3s ease;
+}
+
+/* Sección de proyectos */
+.projects {
+    padding: 50px;
+    background-color: #222;
+    display: flex; /* Para alinear elementos en la sección de proyectos */
+    flex-direction: column; /* Alinear elementos verticalmente */
+    gap: 50px; /* Espacio entre proyectos */
+    font-size: 1.5rem;
+    margin-top: 60px;
+}
+
+.project {
+    display: flex;
+    justify-content: space-between; /* Separar el texto de la imagen */
+    align-items: center; /* Alinear verticalmente */
+    position: relative; /* Para la posición de la imagen */
+    padding: 20px; /* Espaciado interno */
+    border: 2px solid transparent; /* Añadir borde invisible para el hover */
+    transition: border-color 0.3s ease; /* Transición suave para el borde */
+}
+
+
+
+.project-title {
+    font-size: 5rem; /* Tamaño del título del proyecto */
+    color: white; /* Color del texto */
+    cursor: pointer; /* Cambiar cursor al pasar sobre el texto */
+    transition: color 0.3s ease;
+    position: relative; /* Para la imagen que aparece al hacer hover */
+    z-index: 1; /* Mantener el texto encima */
+}
+
+.project-title:hover {
+    color: #aaa; /* Cambio de color al hacer hover */
+}
+
+.project-image {
+    width: 300px; /* Ancho de la imagen */
+    opacity: 0; /* Ocultar la imagen por defecto */
+    transition: opacity 0.3s ease; /* Transición suave para la opacidad */
+    position: absolute; /* Posicionar la imagen de manera absoluta */
+    right: 0; /* Alinear a la derecha del contenedor */
+    top: 0; /* Alinear al tope del contenedor */
+    z-index: 0; /* Colocar detrás del texto */
+}
+
+.project-title:hover + .project-image {
+    opacity: 1; /* Mostrar imagen al hacer hover sobre el título */
+}
+/* Footer */
+footer {
+    background-color: #222; /* Fondo del footer */
+    padding: 20px; /* Espaciado interno */
+    text-align: center; /* Centrar el texto */
+}
+
+footer p {
+    margin: 0; /* Sin margen */
+    color: white; /* Color del texto */
+    font-family: 'Unbounded', sans-serif;
+}
+
+footer a {
+    color: #fff; /* Color de los enlaces */
+    text-decoration: none; /* Sin subrayado */
+    margin: 0 10px; /* Espacio entre enlaces */
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+footer a:hover {
+    color: #aaa; /* Color al hacer hover */
+}
+/* Sección de contacto */
+#contact {
+padding: 50px; /* Espaciado interno */
+background-color: #1111; /* Fondo oscuro */
+text-align: left; /* Centrar el texto */
+margin-top: 50px; /* Espacio superior */
+opacity: 0; /* Inicialmente oculto para la animación de entrada */
+transform: translateY(20px); /* Desplazado hacia abajo para la animación */
+transition: opacity 0.5s ease, transform 0.5s ease; /* Transición suave */
+max-width: 600px; /* Ancho máximo */
+margin-left: auto; /* Centrar horizontalmente */
+margin-right: auto; /* Centrar horizontalmente */
+}
+
+.fade-in {
+animation: fadeIn 1s forwards; /* Llamar a la animación de entrada */
+}
+
+@keyframes fadeIn {
+to {
+opacity: 1; /* Hacer visible */
+transform: translateY(0); /* Volver a la posición original */
+}
+}
+
+.pulse {
+animation: pulse 1.5s infinite; /* Animación de pulsación */
+}
+
+@keyframes pulse {
+0%, 100% {
+transform: scale(1); /* Escala original */
+}
+50% {
+transform: scale(1.05); /* Escala aumentada para la pulsación */
+}
+}
+
+#contact h2 {
+color: white; /* Color del título */
+font-family: 'Unbounded', sans-serif; /* Tipografía */
+}
+
+#contact p {
+color: white; /* Color del texto */
+font-family: 'Unbounded', sans-serif; /* Tipografía */
+}
+
+#contact a {
+color: #fff; /* Color del enlace */
+text-decoration: underline; /* Subrayar el enlace */
+transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+#contact a:hover {
+color: #aaa; /* Color del enlace al pasar el cursor */
+}
+/* Sección Sobre mí */
+#about {
+    padding: 50px; /* Espaciado interno */
+    background-color: #222; /* Fondo oscuro */
+    text-align: left; /* Centrar el texto */
+    opacity: 0; /* Inicialmente oculto para la animación de entrada */
+    transform: translateY(20px); /* Desplazado hacia abajo para la animación */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transición suave */
+    max-width: 6000px; /* Ancho máximo */
+    margin-left: auto; /* Centrar horizontalmente */
+    margin-right: auto; /* Centrar horizontalmente */
+    font-size: 1.5rem;
+    
+}
+
+/* Animación fade-in */
+.fade-in {
+    animation: fadeIn 1s forwards; /* Llamar a la animación de entrada */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Hacer visible */
+        transform: translateY(0); /* Volver a la posición original */
+    }
+}
+/* Estilo para la sección del proyecto */
+.project-section {
+    padding: 50px;
+    background-color: #222; /* Fondo oscuro */
+    color: white; /* Color del texto */
+    text-align: left; /* Alinear texto a la izquierda */
+}
+
+/* Estilos para el carrusel */
+/* Estilo para el carrusel */
+.carousel {
+    position: relative;
+    max-width: 900px; /* Ancho máximo del carrusel */
+    margin: auto; /* Centrar el carrusel */
+    overflow: hidden; /* Ocultar imágenes que sobresalen */
+    display: flex; /* Usar flexbox para alinear las imágenes */
+    margin-bottom: 40px;
+}
+
+.carousel-images {
+    display: flex; /* Alinear imágenes en fila */
+    transition: transform 0.5s ease; /* Transición suave para mover las imágenes */
+}
+
+.carousel-images img {
+    width: 25%; /* Cada imagen ocupa el 25% del ancho del contenedor */
+    height: auto; /* Mantener la relación de aspecto */
+}
+
+
+button.prev, button.next {
+    position: absolute; /* Posicionamiento absoluto */
+    top: 50%; /* Centrar verticalmente */
+    transform: translateY(-50%); /* Ajustar a la mitad */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semi-transparente */
+    color: white; /* Color del texto */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cambiar cursor a puntero */
+    padding: 10px; /* Espaciado */
+    z-index: 1; /* Mantener encima de las imágenes */
+}
+
+button.prev {
+    left: 10px; /* Alinear a la izquierda */
+}
+
+button.next {
+    right: 10px; /* Alinear a la derecha */
+}

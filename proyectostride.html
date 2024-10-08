@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto - Nombre del Proyecto</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap'); /* Fuente brutalista */
+
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111; /* Negro suave */
+            color: white;
+            font-family: 'Unbounded', sans-serif;
+            overflow-x: hidden;
+            cursor: none; /* Ocultar el cursor predeterminado */
+        }
+
+        /* Cursor personalizado */
+        .custom-cursor {
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        /* Estilos del nuevo carrusel */
+        .new-carousel {
+            position: relative;
+            max-width: 100%; /* Ancho máximo del carrusel */
+            margin: 20px 0; /* Margen superior e inferior */
+            overflow: hidden;
+            display: flex; /* Flexbox para alinear imágenes */
+            align-items: center; /* Centrar verticalmente las imágenes */
+        }
+
+        .new-carousel-images {
+            display: flex; /* Flex para alinear las imágenes en fila */
+            transition: transform 0.5s ease; /* Transición suave */
+        }
+
+        .new-carousel-images img {
+            width: 33.33%; /* Ancho de cada imagen para que tres imágenes quepan en una fila */
+            height: auto; /* Mantener la proporción de las imágenes */
+        }
+
+        .new-carousel button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 10; /* Asegurarse de que los botones estén encima */
+        }
+
+        .new-prev {
+            left: 10px; /* Posición del botón anterior */
+        }
+
+        .new-next {
+            right: 10px; /* Posición del botón siguiente */
+        }
+/* Logo animado */
+.logo {
+            font-size: 3rem; /* Tamaño del logo aumentado */
+            font-family: 'Unbounded', sans-serif;
+            color: transparent;
+            -webkit-text-stroke: 3px white; /* Contorno de la letra */
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-link {
+    text-decoration: none; /* Elimina solo la subrayado */
+}
+
+.logo-link .logo {
+    text-decoration: none; /* Aplica a la clase logo para asegurarte de que el subrayado no se aplique aquí */
+}
+    </style>
+</head>
+<body>
+
+<!-- Cursor personalizado -->
+<div class="custom-cursor" id="customCursor"></div>
+<!-- Encabezado -->
+<header>
+    <a href="index.html" class="logo-link">
+        <div class="logo" id="logo">Patience Lozano</div>
+    </a>
+    <nav>
+        <a href="index.html#about">Sobre mí</a> 
+        <a href="index.html#projects">Proyectos</a> 
+        <a href="index.html#contact">Contacto</a>
+    </nav>
+</header>
+
+<!-- Sección del Proyecto -->
+<section class="project-section">
+    <h1>Stride</h1>
+
+    <!-- Nuevo Carrusel de 3 Imágenes -->
+    <div class="new-carousel" id="newCarousel">
+        <div class="new-carousel-images">
+            <img src="img/pc12.png" alt="Imagen 1 del nuevo carrusel">
+            <img src="img/pc3.png" alt="Imagen 2 del nuevo carrusel">
+            <img src="img/pc8.png" alt="Imagen 3 del nuevo carrusel">
+            <img src="img/pc5.png" alt="Imagen 3 del nuevo carrusel">
+            <img src="img/pc4.png" alt="Imagen 3 del nuevo carrusel">
+            <img src="img/pc2.png" alt="Imagen 3 del nuevo carrusel">
+            <img src="img/pc1.png" alt="Imagen 3 del nuevo carrusel">
+        </div>
+        <button class="new-prev" onclick="moveNewSlide(-1)">❮</button>
+        <button class="new-next" onclick="moveNewSlide(1)">❯</button>
+    </div>
+
+    <!-- Carrusel de Imágenes -->
+    <div class="carousel">
+        <div class="carousel-images">
+            <img src="img/stridemobile.png" alt="Imagen 1 del proyecto">
+            <img src="img/stride2.png" alt="Imagen 2 del proyecto">
+            <img src="img/stride3.png" alt="Imagen 3 del proyecto">
+            <img src="img/stide4.png" alt="Imagen 4 del proyecto">
+            <img src="img/stride5.png" alt="Imagen 5 del proyecto">
+            <img src="img/stride6.png" alt="Imagen 6 del proyecto">
+            <img src="img/stride3.png" alt="Imagen 3 del proyecto">
+            <img src="img/stride2.png" alt="Imagen 2 del proyecto">
+            
+            <!-- Agrega más imágenes según sea necesario -->
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">❮</button>
+        <button class="next" onclick="moveSlide(1)">❯</button>
+    </div>
+
+    <!-- Problema -->
+    <h2>Problema</h2>
+    <p>Problema/Reto: Diseñar un e-commerce
+
+        Durante el proyecto, se me presentó el desafío de diseñar la página web de un e-commerce para una tienda que no tenía presencia online. El objetivo era crear una experiencia de usuario que se adaptara a las necesidades específicas del comercio</p>
+
+    <!-- Solución -->
+    <h2>Solución</h2>
+    <p>Para abordar este reto, comencé con una investigación exhaustiva, tanto a nivel de mercado como de usuario. Mi meta era comprender cómo debería funcionar el comercio electrónico para asegurar que la solución final satisficiera las expectativas y necesidades de los usuarios.
+
+        Una de las etapas clave fue la creación de la arquitectura de la información (AI). Este paso implicaba identificar y categorizar todos los productos que mi cliente ofrecía. Para validar la estructura que había definido, realicé pruebas con 3 a 5 usuarios reales. Esto fue fundamental para asegurar que la AI era intuitiva y efectiva.
+        
+        Una vez que la arquitectura fue validada, pasé a la fase de wireframing, donde definí los patrones de navegación y la estructura de los módulos de la página. Me aseguré de que la estructura no solo se alineara con la propuesta del comercio, sino que también tuviera en cuenta a los usuarios objetivo. Realicé una nueva ronda de pruebas para validar los bocetos y flujos de navegación, lo cual fue esencial para refinar la experiencia del usuario.
+        
+        Como solución, desarrollé tanto una web app como una versión móvil para la tienda de zapatos de lujo y sostenibles, hechos a mano. Además, incluí una sección editorial para añadir un toque de glamour y contar la historia detrás de los productos. Utilicé una paleta de colores en blanco y negro para transmitir elegancia y sofisticación, asegurando que la experiencia visual fuera tan atractiva como funcional.
+        
+        Finalmente, en la fase de diseño visual, generé una línea gráfica para el comercio y apliqué el diseño a los wireframes. Desarrollé un sistema de diseño modular, flexible y escalable, siguiendo las pautas de Atomic Design, lo que permitió que el e-commerce no solo fuera estéticamente agradable, sino también funcional y fácil de usar.</p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Patience Lozano. Todos los derechos reservados.</p>
+    <p>
+        <a href="index.html#about">Sobre mí</a> |
+        <a href="index.html#projects">Proyectos</a> |
+        <a href="index.html#contact">Contacto</a>
+    </p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    // Cursor personalizado
+    document.addEventListener('mousemove', function(e) {
+        const cursor = document.getElementById('customCursor');
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+    });
+
+    // Lógica para el nuevo carrusel de 3 imágenes
+    let newSlideIndex = 0;
+
+    function moveNewSlide(n) {
+        const newSlides = document.querySelectorAll("#newCarousel .new-carousel-images img");
+        const totalNewSlides = newSlides.length;
+
+        newSlideIndex += n; // Ajustar el índice según la dirección
+
+        if (newSlideIndex < 0) {
+            newSlideIndex = totalNewSlides - 1; // Volver al último si se sale por la izquierda
+        } else if (newSlideIndex >= totalNewSlides) {
+            newSlideIndex = 0; // Volver al principio si se sale por la derecha
+        }
+
+        // Mover el carrusel
+        const offset = -newSlideIndex * 33.33; // Ajustar el desplazamiento basado en el ancho de las imágenes
+        document.querySelector(".new-carousel-images").style.transform = `translateX(${offset}%)`;
+    }
+
+    // Lógica para el carrusel de imágenes existente
+    let slideIndex = 0;
+    const imagesPerSlide = 4; // Número de imágenes por slide
+    const totalImages = document.querySelectorAll(".carousel-images img").length; // Total de imágenes
+
+    showSlides();
+
+    function showSlides() {
+        const slides = document.querySelectorAll(".carousel-images img");
+        // Calcular el rango de imágenes que se deben mostrar
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (let i = slideIndex; i < slideIndex + imagesPerSlide && i < slides.length; i++) {
+            slides[i].style.display = "block";  
+        }
+        slideIndex += imagesPerSlide;
+        if (slideIndex >= totalImages) {slideIndex = 0} // Volver al principio si llegamos al final
+    }
+
+    function moveSlide(n) {
+        slideIndex += n * imagesPerSlide; // Ajustar el índice según el número de imágenes por slide
+        const slides = document.querySelectorAll(".carousel-images img");
+        // Asegurar que el índice no sobrepase el total de imágenes
+        if (slideIndex >= totalImages) {slideIndex = 0}
+        if (slideIndex < 0) {slideIndex = totalImages - imagesPerSlide}
+        // Ocultar todas las imágenes
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        // Mostrar el rango de imágenes correspondiente
+        for (let i = slideIndex; i < slideIndex + imagesPerSlide && i < slides.length; i++) {
+            slides[i].style.display = "block";  
+        }
+    }
+</script>
+</body>
+</html>

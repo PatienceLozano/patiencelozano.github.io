@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio de Patience Lozano</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap'); /* Fuente brutalista */
+
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111; /* Negro suave */
+            color: white;
+            font-family: 'Unbounded', sans-serif;
+            overflow-x: hidden;
+            cursor: none; /* Ocultar el cursor predeterminado */
+        }
+
+        /* Cursor personalizado */
+        .custom-cursor {
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+        }
+
+        /* Logo animado */
+        .logo {
+            font-size: 3rem; /* Tamaño del logo aumentado */
+            font-family: 'Unbounded', sans-serif;
+            color: transparent;
+            -webkit-text-stroke: 3px white; /* Contorno de la letra */
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::before {
+            content: 'P';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: transparent;
+            -webkit-text-stroke: 3px white;
+            clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+            transition: clip-path 0.8s ease;
+        }
+
+        .logo:hover::before {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        }
+
+        /* Menú */
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: white;
+            font-size: 1.2rem;
+            font-family: 'Unbounded', sans-serif;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ff11008a;
+        }
+
+        /* Sección de bienvenida */
+        .welcome-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100vh;
+            padding-left: 20px;
+        }
+
+        .welcome-title {
+            font-size: 6rem;
+            font-family: 'Unbounded', sans-serif;
+        }
+
+        .welcome-description {
+            font-size: 1.5rem;
+            margin-top: 20px;
+            font-family: 'Unbounded', sans-serif;
+        }
+
+        /* Flecha de desplazamiento */
+        .scroll-down {
+            margin-top: 50px;
+            cursor: pointer;
+            font-size: 6rem; /* Tamaño de la flecha */
+            color: #222; /* Color blanco */
+            line-height: 0.5; /* Alineación vertical de la flecha */
+            transform: translateY(10px); /* Posición inicial de la flecha */
+            transition: transform 0.3s ease;
+        }
+
+        .scroll-down .arrow {
+            width: 2px;
+            height: 50px;
+            background-color: white;
+            position: relative;
+        }
+
+        .scroll-down .arrow::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -20px;
+            width: 12px;
+            height: 12px;
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(45deg);
+        }
+
+        .scroll-down:hover .arrow {
+            transform: translateY(10px);
+            transition: transform 0.3s ease;
+        }
+
+        /* Sección de proyectos */
+        .projects {
+            padding: 50px;
+            background-color: #222;
+            display: flex; /* Para alinear elementos en la sección de proyectos */
+            flex-direction: column; /* Alinear elementos verticalmente */
+            gap: 50px; /* Espacio entre proyectos */
+            font-size: 1.5rem;
+            margin-top: 60px;
+        }
+
+        .project {
+            display: flex;
+            justify-content: space-between; /* Separar el texto de la imagen */
+            align-items: center; /* Alinear verticalmente */
+            position: relative; /* Para la posición de la imagen */
+            padding: 20px; /* Espaciado interno */
+            border: 2px solid transparent; /* Añadir borde invisible para el hover */
+            transition: border-color 0.3s ease; /* Transición suave para el borde */
+        }
+
+        
+
+        .project-title {
+            font-size: 5rem; /* Tamaño del título del proyecto */
+            color: white; /* Color del texto */
+            cursor: pointer; /* Cambiar cursor al pasar sobre el texto */
+            transition: color 0.3s ease;
+            position: relative; /* Para la imagen que aparece al hacer hover */
+            z-index: 1; /* Mantener el texto encima */
+        }
+
+        .project-title:hover {
+            color: #aaa; /* Cambio de color al hacer hover */
+        }
+
+        .project-image {
+            width: 350px; /* Ancho de la imagen */
+            opacity: 0; /* Ocultar la imagen por defecto */
+            transition: opacity 0.3s ease; /* Transición suave para la opacidad */
+            position: absolute; /* Posicionar la imagen de manera absoluta */
+            right: 0; /* Alinear a la derecha del contenedor */
+            top: 0; /* Alinear al tope del contenedor */
+            z-index: 0; /* Colocar detrás del texto */
+        }
+
+        .project-title:hover + .project-image {
+            opacity: 1; /* Mostrar imagen al hacer hover sobre el título */
+        }
+        /* Footer */
+        footer {
+            background-color: #222; /* Fondo del footer */
+            padding: 20px; /* Espaciado interno */
+            text-align: center; /* Centrar el texto */
+        }
+
+        footer p {
+            margin: 0; /* Sin margen */
+            color: white; /* Color del texto */
+            font-family: 'Unbounded', sans-serif;
+        }
+
+        footer a {
+            color: #fff; /* Color de los enlaces */
+            text-decoration: none; /* Sin subrayado */
+            margin: 0 10px; /* Espacio entre enlaces */
+            transition: color 0.3s ease; /* Transición suave para el color */
+        }
+
+        footer a:hover {
+            color: #aaa; /* Color al hacer hover */
+        }
+ /* Sección de contacto */
+#contact {
+    padding: 50px; /* Espaciado interno */
+    background-color: #1111; /* Fondo oscuro */
+    text-align: left; /* Centrar el texto */
+    margin-top: 50px; /* Espacio superior */
+    opacity: 0; /* Inicialmente oculto para la animación de entrada */
+    transform: translateY(20px); /* Desplazado hacia abajo para la animación */
+    transition: opacity 0.5s ease, transform 0.5s ease; /* Transición suave */
+    max-width: 600px; /* Ancho máximo */
+    margin-left: auto; /* Centrar horizontalmente */
+    margin-right: auto; /* Centrar horizontalmente */
+}
+
+.fade-in {
+    animation: fadeIn 1s forwards; /* Llamar a la animación de entrada */
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1; /* Hacer visible */
+        transform: translateY(0); /* Volver a la posición original */
+    }
+}
+
+.pulse {
+    animation: pulse 1.5s infinite; /* Animación de pulsación */
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1); /* Escala original */
+    }
+    50% {
+        transform: scale(1.05); /* Escala aumentada para la pulsación */
+    }
+}
+
+#contact h2 {
+    color: white; /* Color del título */
+    font-family: 'Unbounded', sans-serif; /* Tipografía */
+}
+
+#contact p {
+    color: white; /* Color del texto */
+    font-family: 'Unbounded', sans-serif; /* Tipografía */
+}
+
+#contact a {
+    color: #fff; /* Color del enlace */
+    text-decoration: underline; /* Subrayar el enlace */
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+#contact a:hover {
+    color: #aaa; /* Color del enlace al pasar el cursor */
+}
+/* Sección Sobre mí */
+#about {
+            padding: 50px; /* Espaciado interno */
+            background-color: #222; /* Fondo oscuro */
+            text-align: left; /* Centrar el texto */
+            opacity: 0; /* Inicialmente oculto para la animación de entrada */
+            transform: translateY(20px); /* Desplazado hacia abajo para la animación */
+            transition: opacity 0.5s ease, transform 0.5s ease; /* Transición suave */
+            max-width: 6000px; /* Ancho máximo */
+            margin-left: auto; /* Centrar horizontalmente */
+            margin-right: auto; /* Centrar horizontalmente */
+            font-size: 1.5rem;
+        }
+
+        /* Animación fade-in */
+        .fade-in {
+            animation: fadeIn 1s forwards; /* Llamar a la animación de entrada */
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1; /* Hacer visible */
+                transform: translateY(0); /* Volver a la posición original */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Cursor personalizado -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <!-- Encabezado -->
+    <header>
+        <div class="logo" id="logo">Patience Lozano</div>
+        <nav>
+            <a href="#about">Sobre mí</a>
+            <a href="#projects">Proyectos</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Sección de bienvenida -->
+    <section class="welcome-section">
+        <h1 class="welcome-title">¡Bienvenido a mi Portfolio!</h1>
+        <p class="welcome-description">Explora mis proyectos y descubre más sobre mí.</p>
+        <section id="about">
+            <h2>Sobre mí</h1>
+            <p>Me llamo Patience Lozano, soy desarrolladora web y diseñadora UX/UI apasionada por crear experiencias digitales atractivas y funcionales. Mi objetivo es combinar diseño y tecnología para construir soluciones que hagan la vida más fácil a las personas. Me encanta aprender nuevas tecnologías y siempre estoy en busca de proyectos desafiantes que me permitan crecer profesionalmente.</p>
+        </section>
+        <div class="scroll-down">
+            &#8595; <!-- Flecha hacia abajo -->
+        </div>
+    </section>
+    
+    
+   <!-- Sección de proyectos -->
+   <section class="projects" id="projects">
+    <h2>Proyectos</h2>
+    
+    <div class="project">
+        <div class="project-title" onclick="window.location.href='proyectostride.html'">Stride</div>
+        <img class="project-image" src="img/pc123.png" alt="Imagen de stride" onclick="window.location.href='proyectostride.html'">
+    </div>
+
+    <div class="project">
+        <div class="project-title" onclick="window.location.href='proyectoairbnb.html'">Airbnb</div>
+        <img class="project-image" src="img/airbnb1.png" alt="Imagen de Proyecto 2" onclick="window.location.href='proyectoairbnb.html'">
+    </div>
+
+    <div class="project">
+        <div class="project-title" onclick="window.location.href='proyectotera.html'">Tera</div>
+        <img class="project-image" src="img/tera2.png" alt="Imagen de Proyecto 3" onclick="window.location.href='proyectotera.html'">
+    </div>
+
+    <!-- Aquí puedes agregar más proyectos según sea necesario -->
+</section>
+<!-- Sección de contacto -->
+<!-- Sección de contacto -->
+<section id="contact" style="padding: 50px; background-color: #222; text-align: center; margin-top: 50px; opacity: 0; transform: translateY(20px);" class="fade-in">
+    <h2 class="pulse" style="color: white; font-family: 'Unbounded', sans-serif;">¡Conectemos!</h2>
+    <p style="color: white; font-family: 'Unbounded', sans-serif;">
+        Siempre estoy abierta a nuevas oportunidades y colaboraciones. 
+        Si deseas ponerte en contacto, puedes escribirme a: 
+        <a href="mailto:patiencelozano@gmail.com" style="color: #fff; text-decoration: underline;">patiencelozano@gmail.com</a>
+    </p>
+    <p style="color: white; font-family: 'Unbounded', sans-serif;">
+        ¡No dudes en escribirme, me encantaría escuchar tus ideas!
+    </p>
+</section>
+
+
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Patience Lozano. Todos los derechos reservados.</p>
+    <p>
+        <a href="#about">Sobre mí</a> | 
+        <a href="#projects">Proyectos</a> | 
+        <a href="#contact">Contacto</a>
+    </p>
+</footer>
+
+    <script>
+        // Cursor personalizado
+        document.addEventListener('mousemove', function(e) {
+            const cursor = document.getElementById('customCursor');
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+
+        // Scroll hacia la sección de proyectos
+        document.querySelector('.scroll-down').addEventListener('click', function() {
+            document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
+        });
+                // Función para seguir el movimiento del mouse
+                document.addEventListener('mousemove', function(e) {
+            const cursor = document.querySelector('.custom-cursor');
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
+
+        // Efecto de desplazamiento suave al hacer clic en los enlaces
+        const links = document.querySelectorAll('nav a');
+        links.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevenir el comportamiento predeterminado
+                const targetId = this.getAttribute('href'); // Obtener el ID del objetivo
+                const targetElement = document.querySelector(targetId); // Seleccionar el objetivo
+                targetElement.scrollIntoView({ behavior: 'smooth' }); // Desplazarse suavemente hacia el objetivo
+            });
+        });
+
+        // Animación de entrada para la sección "Sobre mí"
+        document.addEventListener('DOMContentLoaded', function() {
+            const aboutSection = document.getElementById('about');
+            aboutSection.classList.add('fade-in'); // Agregar la clase de animación
+        });
+
+        // Animación de entrada para la sección "Contacto"
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactSection = document.getElementById('contact');
+            contactSection.classList.add('fade-in'); // Agregar la clase de animación
+        });
+    </script>
+</body>
+</html>

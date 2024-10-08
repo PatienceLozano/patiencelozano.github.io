@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto - Tera</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.png" type="image/png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap'); /* Fuente brutalista */
+
+        /* Estilos generales */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #111; /* Negro suave */
+            color: white;
+            font-family: 'Unbounded', sans-serif;
+            overflow-x: hidden;
+            cursor: none; /* Ocultar el cursor predeterminado */
+        }
+
+        /* Cursor personalizado */
+        .custom-cursor {
+            width: 15px;
+            height: 15px;
+            background-color: white;
+            border-radius: 50%;
+            position: absolute;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 1000;
+        }
+
+        /* Estilos del nuevo carrusel */
+        .new-carousel {
+            position: relative;
+            max-width: 100%; /* Ancho máximo del carrusel */
+            margin: 20px 0; /* Margen superior e inferior */
+            overflow: hidden;
+            display: flex; /* Flexbox para alinear imágenes */
+            align-items: center; /* Centrar verticalmente las imágenes */
+        }
+
+        .new-carousel-images {
+            display: flex; /* Flex para alinear las imágenes en fila */
+            transition: transform 0.5s ease; /* Transición suave */
+        }
+
+        .new-carousel-images img {
+            width: 33.33%; /* Ancho de cada imagen para que tres imágenes quepan en una fila */
+            height: auto; /* Mantener la proporción de las imágenes */
+        }
+
+        .new-carousel button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 10; /* Asegurarse de que los botones estén encima */
+        }
+
+        .new-prev {
+            left: 10px; /* Posición del botón anterior */
+        }
+
+        .new-next {
+            right: 10px; /* Posición del botón siguiente */
+        }
+        /* Logo animado */
+        .logo {
+            font-size: 3rem; /* Tamaño del logo aumentado */
+            font-family: 'Unbounded', sans-serif;
+            color: transparent;
+            -webkit-text-stroke: 3px white; /* Contorno de la letra */
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-link {
+    text-decoration: none; /* Elimina solo la subrayado */
+}
+
+.logo-link .logo {
+    text-decoration: none; /* Aplica a la clase logo para asegurarte de que el subrayado no se aplique aquí */
+}
+
+
+    </style>
+</head>
+<body>
+
+<!-- Cursor personalizado -->
+<div class="custom-cursor" id="customCursor"></div>
+<!-- Encabezado -->
+<header>
+    <a href="index.html" class="logo-link">
+        <div class="logo" id="logo">Patience Lozano</div>
+    </a>
+    <nav>
+        <a href="index.html#about">Sobre mí</a> 
+        <a href="index.html#projects">Proyectos</a> 
+        <a href="index.html#contact">Contacto</a>
+    </nav>
+</header>
+
+<!-- Sección del Proyecto -->
+<section class="project-section">
+    <h1>Tera</h1>
+
+    <!-- Nuevo Carrusel de 3 Imágenes -->
+    <div class="new-carousel" id="newCarousel">
+        <div class="new-carousel-images">
+            <img src="img/tera2.png" alt="Imagen 2 del nuevo carrusel">
+            
+    
+            <img src="img/teracole.png" alt="Imagen 2 del nuevo carrusel">
+            <img src="img/tera6.png" alt="Imagen 2 del nuevo carrusel">
+            <img src="img/tera1.png" alt="Imagen 1 del nuevo carrusel">
+            <img src="img/tera8.png" alt="Imagen 2 del nuevo carrusel">
+            
+            
+            
+        </div>
+        <button class="new-prev" onclick="moveNewSlide(-1)">❮</button>
+        <button class="new-next" onclick="moveNewSlide(1)">❯</button>
+    </div>
+
+    <!-- Carrusel de Imágenes -->
+    <div class="carousel">
+        <div class="carousel-images">
+            
+            
+           
+            
+            
+            <!-- Agrega más imágenes según sea necesario -->
+        </div>
+        <button class="prev" onclick="moveSlide(-1)">❮</button>
+        <button class="next" onclick="moveSlide(1)">❯</button>
+    </div>
+
+    <!-- Problema -->
+    <h2>Problema</h2>
+    <p>Problema/Reto: Rediseño de una Web de Plantas Antiguo
+
+        En este proyecto, me enfrenté al desafío de rediseñar una web de plantas que había quedado desactualizada y poco atractiva para los usuarios. El sitio original tenía un diseño confuso, una estética anticuada y carecía de secciones útiles que pudieran mejorar la experiencia del usuario. Mi objetivo era modernizar la web, dándole un enfoque más dinámico y visualmente atractivo, al mismo tiempo que mantenía la esencia del contenido sobre el cuidado de las plantas.</p>
+
+    <!-- Solución -->
+    <h2>Solución</h2>
+    <p>Para abordar este reto, comencé por realizar una investigación sobre las tendencias actuales en diseño web y analicé cómo otros sitios dedicados a la jardinería presentaban su contenido. Con un enfoque en el estilo brutalista, decidí que quería romper con la uniformidad y los diseños convencionales, optando por una estética audaz que utilizara un esquema de colores en blanco, negro y verde.
+
+        El primer paso fue redefinir la estructura del sitio, creando secciones que no solo fueran informativas, sino que también guiaran al usuario en su experiencia de navegación. Implementé secciones dedicadas al cuidado de las plantas, donde los usuarios pudieran encontrar consejos prácticos y recursos valiosos. Para hacer el contenido más atractivo, utilicé fotos limpias y de alta calidad, permitiendo que las imágenes de las plantas brillaran en un fondo minimalista.
+        
+        Uno de los mayores desafíos fue asegurarse de que la nueva estética brutalista no compromitiera la funcionalidad del sitio. Por lo tanto, prioricé la usabilidad en cada decisión de diseño. Opté por un diseño de cuadrícula asimétrica que incorporara elementos interactivos, como animaciones sutiles y transiciones suaves, para mantener la atención del usuario y hacer que la experiencia de navegación fuera más envolvente.
+        
+        Como resultado final, logré crear una web de plantas modernizada que no solo era visualmente impactante, sino que también ofrecía una experiencia de usuario intuitiva y dinámica. El nuevo diseño no solo atrajo a más visitantes, sino que también facilitó el acceso a la información, convirtiendo la web en un recurso valioso para los amantes de las plantas, desde principiantes hasta expertos.</p>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2024 Patience Lozano. Todos los derechos reservados.</p>
+    <p>
+        <a href="index.html#about">Sobre mí</a> |
+        <a href="index.html#projects">Proyectos</a> |
+        <a href="index.html#contact">Contacto</a>
+    </p>
+</footer>
+
+<script src="script.js"></script>
+<script>
+    // Cursor personalizado
+    document.addEventListener('mousemove', function(e) {
+        const cursor = document.getElementById('customCursor');
+        cursor.style.left = e.pageX + 'px';
+        cursor.style.top = e.pageY + 'px';
+    });
+
+    // Lógica para el nuevo carrusel de 3 imágenes
+    let newSlideIndex = 0;
+
+    function moveNewSlide(n) {
+        const newSlides = document.querySelectorAll("#newCarousel .new-carousel-images img");
+        const totalNewSlides = newSlides.length;
+
+        newSlideIndex += n; // Ajustar el índice según la dirección
+
+        if (newSlideIndex < 0) {
+            newSlideIndex = totalNewSlides - 1; // Volver al último si se sale por la izquierda
+        } else if (newSlideIndex >= totalNewSlides) {
+            newSlideIndex = 0; // Volver al principio si se sale por la derecha
+        }
+
+        // Mover el carrusel
+        const offset = -newSlideIndex * 33.33; // Ajustar el desplazamiento basado en el ancho de las imágenes
+        document.querySelector(".new-carousel-images").style.transform = `translateX(${offset}%)`;
+    }
+
+    // Lógica para el carrusel de imágenes existente
+    let slideIndex = 0;
+    const imagesPerSlide = 4; // Número de imágenes por slide
+    const totalImages = document.querySelectorAll(".carousel-images img").length; // Total de imágenes
+
+    showSlides();
+
+    function showSlides() {
+        const slides = document.querySelectorAll(".carousel-images img");
+        // Calcular el rango de imágenes que se deben mostrar
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (let i = slideIndex; i < slideIndex + imagesPerSlide && i < slides.length; i++) {
+            slides[i].style.display = "block";  
+        }
+        slideIndex += imagesPerSlide;
+        if (slideIndex >= totalImages) {slideIndex = 0} // Volver al principio si llegamos al final
+    }
+
+    function moveSlide(n) {
+        slideIndex += n * imagesPerSlide; // Ajustar el índice según el número de imágenes por slide
+        const slides = document.querySelectorAll(".carousel-images img");
+        // Asegurar que el índice no sobrepase el total de imágenes
+        if (slideIndex >= totalImages) {slideIndex = 0}
+        if (slideIndex < 0) {slideIndex = totalImages - imagesPerSlide}
+        // Ocultar todas las imágenes
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        // Mostrar el rango de imágenes correspondiente
+        for (let i = slideIndex; i < slideIndex + imagesPerSlide && i < slides.length; i++) {
+            slides[i].style.display = "block";  
+        }
+    }
+</script>
+</body>
+</html>
