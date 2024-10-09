@@ -297,6 +297,162 @@
                 transform: translateY(0); /* Volver a la posición original */
             }
         }
+        /* Media queries para hacer responsive el sitio */
+
+/* Para pantallas pequeñas (móviles) */
+@media (max-width: 600px) {
+    body {
+        font-size: 14px; /* Tamaño de fuente más pequeño */
+    }
+
+    header {
+        padding: 10px;
+        flex-direction: column; /* Alinear logo y menú verticalmente */
+        align-items: flex-start; /* Menú alineado a la izquierda */
+    }
+
+    .logo {
+        font-size: 2rem; /* Reducir tamaño del logo */
+        -webkit-text-stroke: 2px white; /* Reducir grosor del contorno */
+    }
+
+    nav a {
+        font-size: 1rem; /* Tamaño de los enlaces del menú reducido */
+    }
+
+    .welcome-title {
+        font-size: 3rem; /* Reducir tamaño del título de bienvenida */
+    }
+
+    .welcome-description {
+        font-size: 1.2rem; /* Reducir tamaño de la descripción */
+    }
+
+    .scroll-down {
+        font-size: 3rem; /* Reducir tamaño de la flecha */
+    }
+
+    .projects {
+        padding: 20px; /* Reducir el padding de la sección de proyectos */
+        gap: 20px; /* Reducir el espacio entre proyectos */
+    }
+
+    .project-title {
+        font-size: 2rem; /* Reducir el tamaño del título de los proyectos */
+    }
+
+    .project-image {
+        width: 150px; /* Reducir el tamaño de las imágenes de los proyectos */
+    }
+
+    footer {
+        padding: 10px; /* Reducir el padding del footer */
+        font-size: 0.8rem; /* Reducir el tamaño del texto del footer */
+    }
+}
+
+/* Para pantallas medianas (tablets) */
+@media (min-width: 601px) and (max-width: 900px) {
+    body {
+        font-size: 16px;
+    }
+
+    header {
+        padding: 15px;
+        flex-direction: row; /* Mantener el layout horizontal */
+        justify-content: space-between; /* Distribuir espacio entre logo y menú */
+    }
+
+    .logo {
+        font-size: 2.5rem; /* Ajustar el tamaño del logo */
+        -webkit-text-stroke: 2.5px white; /* Ajustar el grosor del contorno */
+    }
+
+    nav a {
+        font-size: 1.2rem;
+    }
+
+    .welcome-title {
+        font-size: 4.5rem; /* Ajustar el tamaño del título */
+    }
+
+    .welcome-description {
+        font-size: 1.4rem;
+    }
+
+    .scroll-down {
+        font-size: 4rem; /* Ajustar tamaño de la flecha */
+    }
+
+    .projects {
+        padding: 30px;
+        gap: 30px; /* Ajustar el espacio entre proyectos */
+    }
+
+    .project-title {
+        font-size: 3rem; /* Ajustar tamaño de los títulos de proyectos */
+    }
+
+    .project-image {
+        width: 250px; /* Ajustar el tamaño de las imágenes de proyectos */
+    }
+
+    footer {
+        padding: 15px;
+        font-size: 1rem;
+    }
+}
+
+/* Para pantallas grandes (desktops) */
+@media (min-width: 901px) {
+    body {
+        font-size: 18px;
+    }
+
+    header {
+        padding: 20px;
+    }
+
+    .logo {
+        font-size: 3rem; /* Tamaño del logo para pantallas grandes */
+        -webkit-text-stroke: 3px white;
+    }
+
+    nav a {
+        font-size: 1.5rem; /* Tamaño de los enlaces más grande */
+    }
+
+    .welcome-title {
+        font-size: 6rem; /* Mantener el título grande */
+    }
+
+    .welcome-description {
+        font-size: 1.5rem;
+    }
+
+    .scroll-down {
+        font-size: 6rem;
+    }
+
+    .projects {
+        padding: 50px;
+        gap: 50px;
+    }
+
+    .project-title {
+        font-size: 5rem; /* Mantener el tamaño del título del proyecto grande */
+    }
+
+    .project-image {
+        width: 350px; /* Tamaño de imagen grande para proyectos */
+    }
+
+    footer {
+        padding: 20px;
+        font-size: 1.2rem;
+    }
+}
+
 
     </style>
 </head>
